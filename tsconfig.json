@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5", // 指定ECMAScript目标版本
+    "lib": [
+      "ES6",
+      "DOM",
+    ],
+    "module": "commonjs", // 指定模块化类型
+    "declaration": true, // 生成 `.d.ts` 文件
+    "outDir": "./dist", // 编译后生成的文件目录
+    "strict": false,
+    "jsx": "react-jsx",
+    "sourceMap": true,
+    "noEmit": false
+  },
+  "rootDir": "./",
+  "include": [
+    "./packages/**/*",
+    "./example/**/*"
+  ],
+  "exclude": [
+    "**/*.scss",
+    "node_modules/**/*",
+  ]
+}

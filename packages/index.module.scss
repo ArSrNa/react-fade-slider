@@ -1,0 +1,121 @@
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-handler {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    >img {
+        cursor: pointer;
+        width: 30px;
+        margin-inline: 30px;
+    }
+}
+
+.slider-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    >.slider-img {
+        >img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        transform: translateX(0%) scale(1.08);
+        transform-origin: 100%;
+        filter: blur(10px);
+        z-index: 1;
+        opacity: 0;
+        position: absolute;
+        transition: all 1s ease-in-out;
+    }
+
+
+    &-layer {
+        transform: translateX(-30%);
+        filter: blur(5px);
+        transition: transform .8s ease-in-out, opacity .5s ease-in-out, filter .8s ease-in-out;
+        position: absolute;
+        z-index: 4;
+        margin: 8%;
+        color: white;
+        opacity: 0;
+
+        @media screen and (max-width: 768px) {
+            margin: 10% 1.3rem;
+        }
+    }
+
+    &-title {
+        display: flex;
+        font-size: 2.3rem;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+
+    &-content {
+        animation-name: slider-content-fade-in;
+        margin-top: 5px;
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+}
+
+.slider-item-active {
+    >.slider-item {
+        &-layer {
+            opacity: 1;
+            transform: translateX(0%);
+            filter: blur(0px);
+        }
+    }
+
+    >.slider-img {
+        transform: translateX(0%) scale(1);
+        filter: blur(0px);
+        opacity: 1;
+    }
+
+    .slider-bg-img {
+        opacity: 1;
+    }
+}
+
+.slider-bg-img {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.2);
+    filter: blur(10px);
+    opacity: 0;
+}
+
+.slider-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    pointer-events: none; // 避免遮挡交互
+}
