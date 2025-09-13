@@ -42,9 +42,9 @@ export default function Slider(props: {
         };
     }, [autoplay, interval]);
 
-    useEffect(()=>{
+    useEffect(() => {
         onChange && onChange(currentIndex)
-    },[currentIndex])
+    }, [currentIndex])
 
     useEffect(() => {
         item.forEach((m) => {
@@ -96,8 +96,11 @@ export default function Slider(props: {
             <img src={leftIcon} style={{ transform: 'rotate(180deg)' }} onClick={handleRight} />
         </div>
         <div className={style["slider-item-container"]}>
-            {item && item.map((m, i) => <>
-                <div className={`${style["slider-item"]} ${currentIndex === i ? style["slider-item-active"] : ''}`} style={itemStyle} key={`${m.title}${m.content}${m.src}`}>
+            {item && item.map((m, i) =>
+                <div
+                    className={`${style["slider-item"]} ${currentIndex === i ? style["slider-item-active"] : ''}`}
+                    style={itemStyle}
+                    key={`${m.title}${m.content}${m.src}`}>
                     <div className={style["slider-item-layer"]}>
                         <div className={style["slider-item-title"]}>
                             {m.title}
@@ -117,7 +120,6 @@ export default function Slider(props: {
                         className={style["slider-bg-img"]} src={m.src}
                     />}
                 </div>
-            </>
             )}
         </div>
         <div className={`${style["slider-dot-container"]}`}>
