@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      antd:
-        specifier: ^5.27.3
-        version: 5.27.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -36,9 +33,12 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^5.0.2
         version: 5.0.2(vite@7.1.5(@types/node@24.3.3)(less@4.4.1)(sass@1.92.1)(stylus@0.62.0))
+      antd:
+        specifier: ^5.27.3
+        version: 5.27.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-fade-slider:
         specifier: ^1.0.0
-        version: 1.0.0
+        version: 1.0.1
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -670,8 +670,8 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  baseline-browser-mapping@2.8.2:
-    resolution: {integrity: sha512-NvcIedLxrs9llVpX7wI+Jz4Hn9vJQkCPKrTaHIE0sW/Rj1iq6Fzby4NbyTZjQJNoypBXNaG7tEHkTgONZpwgxQ==}
+  baseline-browser-mapping@2.8.3:
+    resolution: {integrity: sha512-mcE+Wr2CAhHNWxXN/DdTI+n4gsPc5QpXpWnyCQWiQYIYZX+ZMJ8juXZgjRa/0/YPJo/NSsgW15/YgmI4nbysYw==}
     hasBin: true
 
   brace-expansion@1.1.12:
@@ -1221,8 +1221,8 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
-  react-fade-slider@1.0.0:
-    resolution: {integrity: sha512-WTyNJFerSWH0UhEranarBPjv+fsq+qM2GLJLUNojbpNdw7nGrzWlzcrj3lKERSm21ywZDo5Ehdqw2I/3xuy5GQ==}
+  react-fade-slider@1.0.1:
+    resolution: {integrity: sha512-3tFHM4Spqd3IbW/LUuH9yrB3jOT9QWsaW70NAB+GPUJNYtXD2jwcu/rJ5YZW3xbm3fjcONKZmqzS0dj2/IQ9LQ==}
 
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
@@ -2007,7 +2007,7 @@ snapshots:
   balanced-match@1.0.2:
     optional: true
 
-  baseline-browser-mapping@2.8.2: {}
+  baseline-browser-mapping@2.8.3: {}
 
   brace-expansion@1.1.12:
     dependencies:
@@ -2022,7 +2022,7 @@ snapshots:
 
   browserslist@4.26.0:
     dependencies:
-      baseline-browser-mapping: 2.8.2
+      baseline-browser-mapping: 2.8.3
       caniuse-lite: 1.0.30001741
       electron-to-chromium: 1.5.218
       node-releases: 2.0.21
@@ -2641,7 +2641,7 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
-  react-fade-slider@1.0.0:
+  react-fade-slider@1.0.1:
     dependencies:
       antd: 5.27.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1

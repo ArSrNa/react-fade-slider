@@ -1,6 +1,5 @@
 .cnb.yml
 src/
 test/
-image/
 example/
 public/
