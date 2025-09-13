@@ -57,3 +57,12 @@ $:
             registry: https://registry.npmjs.org/
             folder: ./
             fail_on_version_conflict: true
+        - name: cnb-npm publish
+          image: tencentcom/npm
+          settings:
+            username: $CNB_TOKEN_USER_NAME
+            token: $CNB_TOKEN
+            email: $CNB_COMMITTER_EMAIL
+            registry: https://npm.cnb.cool/arsrna/os-npm/-/packages/
+            folder: ./
+            fail_on_version_conflict: true
