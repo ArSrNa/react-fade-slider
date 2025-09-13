@@ -42,7 +42,6 @@ $:
         - name: 构建部署
           script:
             - pnpm i
-            - pnpm i -g typescript
             - npm run build
             - echo $CNB_BRANCH
         - name: update version
