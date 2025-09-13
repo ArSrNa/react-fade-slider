@@ -3,6 +3,7 @@ import style from './index.module.scss';
 import { itemProps } from './type';
 
 import leftIcon from './assets/left.svg';
+import pauseIcon from './assets/pause.svg';
 
 export default function Slider(props: {
     item: itemProps[],
@@ -10,6 +11,8 @@ export default function Slider(props: {
     style?: CSSProperties;
     /**每一个轮播项container的样式 */
     itemStyle?: CSSProperties;
+    /**图片样式 */
+    imgStyle?: CSSProperties;
     /**是否启用背景图片 */
     backgroundImage?: boolean;
     /**是否自动播放 */
@@ -18,10 +21,13 @@ export default function Slider(props: {
     interval?: number;
     /**在hover时停止轮播 */
     pauseOnHover?: boolean;
+    /**图片缩放幅度，默认1.2 */
+    scaleRatio?: number;
 }) {
-    const { item, itemStyle, backgroundImage = true, autoplay = true, interval = 5000, pauseOnHover = true } = props;
+    const { item, itemStyle, backgroundImage = true, autoplay = true, interval = 5000, pauseOnHover = true, scaleRatio = 1.15, imgStyle } = props;
 
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isHover, setIsHover] = useState(!pauseOnHover);
 
     const timer = useRef(null);
 
@@ -44,6 +50,7 @@ export default function Slider(props: {
     function handleStartInterval() {
         // console.log('startInterval');
         if (timer.current !== null) return;
+        setIsHover(true);
         timer.current = setInterval(() => {
             handleRight();
         }, interval);
@@ -52,6 +59,7 @@ export default function Slider(props: {
     function handleStopInterval() {
         // console.log('stopInterval');
         if (timer.current === null) return;
+        setIsHover(false);
         clearInterval(timer.current);
         timer.current = null;
     }
@@ -96,12 +104,38 @@ export default function Slider(props: {
                         <div className={style['slider-mask']} />
                         <img src={m.src} />
                     </div>
-                    {backgroundImage && <img className={style["slider-bg-img"]} src={m.src} />}
+                    {backgroundImage && <img
+                        className={style["slider-bg-img"]} src={m.src}
+                        style={{
+                            ...imgStyle,
+                            "--scale-ratio": scaleRatio
+                        } as CSSProperties}
+                    />}
                 </div>
             </>
             )}
         </div>
-        <div className={style["slider-dot"]}>{item && item.map((m, i) => (<div>{i}</div>))}</div>
+        <div className={`${style["slider-dot-container"]}`}>
+            {item && item.map((m, i) => (
+                <div onClick={() => setCurrentIndex(i)} className={style["slider-dot"]}
+                    key={`slider-dot-${i}`}>
+                    <div
+                        className={`
+                        ${style['slider-dot-pg']}
+                        ${currentIndex === i ? style["slider-dot-active"] : ''}`}
+                        style={{
+                            // 带一点偏移，同步动画
+                            '--ani-duration': `${interval / 1000 + 0.2}s`,
+                            '--running-state': isHover ? "running" : "paused"
+                        } as CSSProperties}
+                    />
+                </div>))}
+        </div>
+        {!isHover && <div className={style['slider-state-btn']}>
+            {/* {isHover && <img src={playIcon}  />} */}
+            <img src={pauseIcon} />
+            <span>暂停播放</span>
+        </div>}
     </div>
     );
 }

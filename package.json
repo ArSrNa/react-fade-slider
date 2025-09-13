@@ -1,6 +1,6 @@
 {
   "name": "react-fade-slider",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "React 淡入淡出轮播组件",
   "type": "module",
   "files": [
