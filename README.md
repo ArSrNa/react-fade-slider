@@ -13,7 +13,9 @@ npm i react-fade-slider
 ````
 
 ```jsx
-import Slider from 'react-fade-slider'
+import SliderComp, { itemProps } from 'react-fade-slider';
+// 没有注入js，只能手动引入css
+import 'react-fade-slider/dist/index.css';
 
 function App() {
   const item: itemProps[] = [{
@@ -37,3 +39,15 @@ function App() {
   );
 }
 ```
+
+# API
+
+| 字段 | 类型 | 是否必填 | 释义 | 默认值 |
+|------|------|----------|------|-----------------------------|
+| `item` | `itemProps[]` | 是 | 轮播项数据，包含标题、内容、图片等 | `undefined` |
+| `style` | `CSSProperties` | 否 | 轮播容器的样式 | `undefined` |
+| `itemStyle` | `CSSProperties` | 否 | 每个轮播项容器的样式 | `{ height: '60vh' }` |
+| `backgroundImage` | `boolean` | 否 | 是否启用背景图片 | `true` |
+| `autoplay` | `boolean` | 否 | 是否自动播放 | `true` |
+| `interval` | `number` | 否 | 自动播放间隔（毫秒），建议不小于 3 秒 | `5000` |
+| `pauseOnHover` | `boolean` | 否 | 鼠标悬停时是否暂停轮播，| `true` |

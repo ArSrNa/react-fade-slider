@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import Slider from '../packages/Slider';
-import SliderComp from '../dist/index';
-import '../dist/index.css';
-import { itemProps } from '../packages';
-import './index.scss';
+import SliderComp, { itemProps } from 'react-fade-slider';
+import 'react-fade-slider/dist/index.css';
 
 
 function App() {
