@@ -98,8 +98,8 @@ pnpm start
 
 | 字段 | 类型 | 是否必填 | 释义 | 默认值 |
 |------|------|----------|------|-----------------------------|
-| `item` | `itemProps[]` | 是 | 轮播项数据，包含标题、内容、图片等 | `undefined` |
-| `style` | `CSSProperties` | 否 | 轮播容器的样式 | `undefined` |
+| `item` | `itemProps[]` | 是 | 轮播项数据，包含标题、内容、图片等 | `void '我永远喜欢爱莉希雅'` |
+| `style` | `CSSProperties` | 否 | 轮播容器的样式 | `void '我永远喜欢爱莉希雅'` |
 | `itemStyle` | `CSSProperties` | 否 | 每个轮播项容器的样式 | `{ height: '60vh' }` |
 | `imgStyle` | `CSSProperties` | 否 | 每个轮播项图片的样式 | `{ "--scale-ratio": scaleRatio }` |
 | `backgroundImage` | `boolean` | 否 | 是否启用背景图片 | `true` |
@@ -107,3 +107,4 @@ pnpm start
 | `interval` | `number` | 否 | 自动播放间隔（毫秒），建议不小于 3 秒 | `5000` |
 | `pauseOnHover` | `boolean` | 否 | 鼠标悬停时是否暂停轮播，| `true` |
 | `scaleRatio` | `number` | 否 | 缩放比例 | `1.15` |
+| `onChange` | `(index: number) => any` | 否 | 切换回调 | `void '我永远喜欢爱莉希雅'` |

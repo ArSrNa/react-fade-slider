@@ -23,8 +23,10 @@ export default function Slider(props: {
     pauseOnHover?: boolean;
     /**图片缩放幅度，默认1.2 */
     scaleRatio?: number;
+    /**切换回调 */
+    onChange?: (index: number) => any;
 }) {
-    const { item, itemStyle, backgroundImage = true, autoplay = true, interval = 5000, pauseOnHover = true, scaleRatio = 1.15, imgStyle } = props;
+    const { item, itemStyle, backgroundImage = true, autoplay = true, interval = 5000, pauseOnHover = true, scaleRatio = 1.15, imgStyle, onChange } = props;
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHover, setIsHover] = useState(!pauseOnHover);
@@ -39,6 +41,10 @@ export default function Slider(props: {
             handleStopInterval();
         };
     }, [autoplay, interval]);
+
+    useEffect(()=>{
+        onChange && onChange(currentIndex)
+    },[currentIndex])
 
     useEffect(() => {
         item.forEach((m) => {
@@ -102,14 +108,13 @@ export default function Slider(props: {
                     </div>
                     <div className={style['slider-img']}>
                         <div className={style['slider-mask']} />
-                        <img src={m.src} />
+                        <img src={m.src} style={{
+                            ...imgStyle,
+                            "--scale-ratio": scaleRatio
+                        } as CSSProperties} />
                     </div>
                     {backgroundImage && <img
                         className={style["slider-bg-img"]} src={m.src}
-                        style={{
-                            ...imgStyle,
-                            "--scale-ratio": scaleRatio
-                        } as CSSProperties}
                     />}
                 </div>
             </>
@@ -134,7 +139,6 @@ export default function Slider(props: {
         {!isHover && <div className={style['slider-state-btn']}>
             {/* {isHover && <img src={playIcon}  />} */}
             <img src={pauseIcon} />
-            <span>暂停播放</span>
         </div>}
     </div>
     );
