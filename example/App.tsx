@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Slider from '../packages/Slider';
+import SliderComp from '../dist/index';
+import '../dist/index.css';
 import { itemProps } from '../packages';
 import './index.scss';
 
@@ -23,6 +25,8 @@ function App() {
     <>
       <h1>源文件</h1>
       <Slider item={item} />
+      <h1>编译后</h1>
+      <SliderComp item={item} />
     </>
   );
 }

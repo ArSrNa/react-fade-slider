@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import typescript from '@rollup/plugin-typescript';
 import path from 'path';
 
@@ -27,7 +27,7 @@ export default defineConfig({
         "ES6",
         "DOM",
       ],
-      rootDir: "./",
+      rootDir: "./packages",
       declaration: true, // 生成 `.d.ts` 文件
       outDir: "./dist", // 编译后生成的文件目录
       strict: false,
@@ -70,4 +70,4 @@ export default defineConfig({
       },
     },
   },
-})
+});

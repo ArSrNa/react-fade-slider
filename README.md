@@ -1,69 +1,39 @@
-# React + TypeScript + Vite
+# React Slider 轮播图
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+复现Apple官网轮播介绍效果。
 
-Currently, two official plugins are available:
+![](image/48e2a6a8-d6c2-4ef3-a7b4-f99888474719.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+TODO
 
-## Expanding the ESLint configuration
+# 使用
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+````shell
+npm i react-fade-slider
+````
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```jsx
+import Slider from 'react-fade-slider'
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+function App() {
+  const item: itemProps[] = [{
+    title: '这是标题',
+    content: <>内容123456789<button>按钮</button></>,
+    src: "/5b60764dabc3bf50c2ad7b5ff8eae80b_2607687582866761407.png"
+  }, {
+    title: '<>这是标题2</>',
+    content: <>我永远喜欢薇塔</>,
+    src: "/16de7766a642388d21e4c76cacfde801_5165224128247218265.png"
+  }, {
+    title: '这是标题3',
+    content: <>内容123456789<button>按钮</button></>,
+    src: "/fa9fc6e9532e4c56c9ad0e5e9548a06a_2258061419554533859.png"
+  }];
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  return (
+    <>
+      <Slider item={item} />
+    </>
+  );
+}
 ```
