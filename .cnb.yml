@@ -34,8 +34,6 @@ $:
   tag_push:
     - docker:
         image: docker.cnb.cool/arsrna/dev-env/node22:latest
-      imports:
-        - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
       runner:
         cpus: 16
       stages:
@@ -48,14 +46,9 @@ $:
           # 修改 package.json 中的version为当前tag，但不会提交代码
           script: npm version $CNB_BRANCH --no-git-tag-version
         - name: npm publish
-          image: tencentcom/npm
-          settings:
-            username: $NPM_USER
-            token: $NPM_TOKEN
-            email: $NPM_EMAIL
-            registry: https://registry.npmjs.org/
-            folder: ./
-            fail_on_version_conflict: true
+          script:
+            - npm publish
+
         - name: cnb-npm publish
           image: tencentcom/npm
           settings:
@@ -64,4 +57,4 @@ $:
             email: $CNB_COMMITTER_EMAIL
             registry: https://npm.cnb.cool/arsrna/os-npm/-/packages/
             folder: ./
-            fail_on_version_conflict: true
+            fail_on_version_conflict: false
