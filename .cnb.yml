@@ -1,0 +1,59 @@
+$:
+  vscode:
+    - services:
+        - vscode
+        - docker
+      docker:
+        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+        volumes:
+          - /root/.npm
+          - /root/.pnpm-store
+      imports:
+        - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
+      runner:
+        cpus: 16
+      # stages:
+      #   - name: 安装依赖
+      #     script:
+      #       - pnpm install
+      #       - pnpm i -g typescript
+  push:
+    - stages:
+        - name: sync to github
+          image: tencentcom/git-sync
+          imports:
+            - https://cnb.cool/arsrna/env/-/blob/main/git.yaml
+          settings:
+            target_url: https://github.com/ArSrNa/react-fade-slider
+            auth_type: https
+            username: ${GIT_USERNAME}
+            password: ${GIT_ACCESS_TOKEN}
+            git_email: "root@arsrna.cn"
+
+  # tag push 时触发
+  tag_push:
+    - docker:
+        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+      imports:
+        - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
+      runner:
+        cpus: 16
+      stages:
+        - name: 构建部署
+          script:
+            - pnpm i
+            - pnpm i -g typescript
+            - npm run build
+            - echo $CNB_BRANCH
+        - name: update version
+          # 修改 package.json 中的version为当前tag，但不会提交代码
+          script: npm version $CNB_BRANCH --no-git-tag-version
+        - name: npm publish
+          image: tencentcom/npm
+          settings:
+            username: $NPM_USER
+            token: $NPM_TOKEN
+            email: $NPM_EMAIL
+            registry: https://registry.npmjs.org/
+            folder: ./
+            fail_on_version_conflict: true
