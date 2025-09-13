@@ -1,7 +1,7 @@
 import Slider from '../packages/Slider';
 import './index.scss'
-import SliderComp, { itemProps } from 'react-fade-slider';
-import 'react-fade-slider/dist/index.css';
+import SliderComp, { itemProps } from '../dist/index.js';
+import '../dist/index.css';
 
 
 function App() {
