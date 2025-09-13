@@ -138,7 +138,15 @@
     width: 100%;
     height: 100%;
     z-index: 2;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4));
+    // 防止blur效果露出边缘
+    transform: scale(1.1);
+background: linear-gradient(
+  to right,
+  rgba(0, 0, 0, 0.78) 0%,
+  rgba(0, 0, 0, 0.78) 30%,
+  rgba(0, 0, 0, 0.3) 100%
+);
+
     pointer-events: none; // 避免遮挡交互
 }
 
