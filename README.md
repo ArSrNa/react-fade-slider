@@ -4,7 +4,7 @@
 
 ![](image/index.gif)
 
-CNB不支持视频直接预览，[点此查看效果](images/index.mp4)
+CNB不支持视频直接预览，[点此查看效果](image/index.mp4)
 
 TODO
 

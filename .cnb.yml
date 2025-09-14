@@ -12,11 +12,12 @@ $:
         - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
       runner:
         cpus: 16
-      # stages:
-      #   - name: 安装依赖
-      #     script:
-      #       - pnpm install
-      #       - pnpm i -g typescript
+      stages:
+        - name: 安装依赖
+          script: pnpm install
+        - name: 构建
+          script: npm run build
+
   push:
     - stages:
         - name: sync to github

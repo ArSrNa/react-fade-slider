@@ -86,10 +86,10 @@ export default function Slider(props: {
 
     return (<div className={style["slider-container"]} style={props.style || { height: '60vh' }}
         onMouseLeave={() => {
-            if (pauseOnHover) handleStartInterval();
+            if (pauseOnHover && autoplay) handleStartInterval();
         }}
         onMouseEnter={() => {
-            if (pauseOnHover) handleStopInterval();
+            if (pauseOnHover && autoplay) handleStopInterval();
         }}>
         <div className={style["slider-handler"]}>
             <img src={leftIcon} onClick={handleLeft} />
@@ -127,19 +127,17 @@ export default function Slider(props: {
                 <div onClick={() => setCurrentIndex(i)} className={style["slider-dot"]}
                     key={`slider-dot-${i}`}>
                     <div
-                        className={`
-                        ${style['slider-dot-pg']}
-                        ${currentIndex === i ? style["slider-dot-active"] : ''}`}
+                        className={`${currentIndex === i ? style["slider-dot-active"] : ''}`}
                         style={{
                             // 带一点偏移，同步动画
                             '--ani-duration': `${interval / 1000 + 0.2}s`,
                             '--running-state': isHover ? "running" : "paused"
                         } as CSSProperties}
                     />
+                    <div className={style['slider-dot-bg']} />
                 </div>))}
         </div>
         {!isHover && <div className={style['slider-state-btn']}>
-            {/* {isHover && <img src={playIcon}  />} */}
             <img src={pauseIcon} />
         </div>}
     </div>

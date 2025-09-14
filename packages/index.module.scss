@@ -31,7 +31,10 @@
             background-color: #00000069;
         }
     }
+
 }
+
+
 
 .slider-item {
     position: absolute;
@@ -40,7 +43,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    visibility:hidden;
+    visibility: hidden;
 
 
     >.slider-img {
@@ -71,14 +74,9 @@
         transition: transform 0.8s cubic-bezier(0.07, 0.26, 0.22, 0.77), opacity 0.5s ease-in-out, filter 0.8s ease-in-out;
         position: absolute;
         z-index: 4;
-        margin: 8%;
+        margin: 70px 100px;
         color: white;
         opacity: 0;
-
-        @media screen and (max-width: 768px) {
-            margin: 10% 1.3rem;
-            width: 90%;
-        }
     }
 
     &-title {
@@ -97,7 +95,8 @@
 }
 
 .slider-item-active {
-    visibility:visible;
+    visibility: visible;
+
     >.slider-item {
         &-layer {
             opacity: 1;
@@ -143,12 +142,10 @@
     z-index: 2;
     // 防止blur效果露出边缘
     transform: scale(1.1);
-background: linear-gradient(
-  to right,
-  rgba(0, 0, 0, 0.78) 0%,
-  rgba(0, 0, 0, 0.78) 30%,
-  rgba(0, 0, 0, 0.3) 100%
-);
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.78) 0%,
+            rgba(0, 0, 0, 0.78) 30%,
+            rgba(0, 0, 0, 0.3) 100%);
 
     pointer-events: none; // 避免遮挡交互
 }
@@ -156,32 +153,40 @@ background: linear-gradient(
 .slider-dot {
     &-container {
         position: absolute;
-        bottom: 20px;
+        bottom: 0px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 4;
         display: flex;
+        align-items: center;
         gap: 5px;
     }
 
     & {
         cursor: pointer;
         width: 35px;
-        height: 3px;
-        background-color: #ffffff39;
+        height: 40px;
+        position: relative;
     }
 
-    &-pg {
-        animation-play-state: var(--running-state);
+    &-bg {
+        top:50%;
+        width: 35px;
+        height: 3px;
+        background-color: #ffffff39;
+        position: absolute;
     }
 
     &-active {
+        top:50%;
+        width: 100%;
+        height: 3px;
         animation-name: progress;
         animation-duration: var(--ani-duration);
         animation-timing-function: linear;
-        background-color: #ffffff69;
-        width: 100%;
-        height: 100%;
+        background-color: #ffffff91;
+        position: absolute;
+        z-index: 5;
     }
 }
 
@@ -210,5 +215,21 @@ background: linear-gradient(
 
     >img {
         width: 30px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .slider-handler {
+        display: none;
+    }
+
+    .slider-item-layer {
+        margin: 10% 1.3rem;
+        width: 90%;
+    }
+
+    .slider-state-btn {
+        display: none;
     }
 }
