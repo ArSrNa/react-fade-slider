@@ -2,11 +2,11 @@
 
 复现Apple官网轮播介绍效果。
 
-![](image/48e2a6a8-d6c2-4ef3-a7b4-f99888474719.png)
+![](image/image.png)
 
 CNB不支持视频直接预览，[点此查看效果](image/index.mp4)
 
-TODO
+[查看Demo](https://qv72q59xbu-5173.cnb.run/demo/nodejs/slider)
 
 # 使用
 
