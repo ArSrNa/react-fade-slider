@@ -28,7 +28,7 @@ export default function Slider(props: {
 }) {
     const { item, itemStyle, backgroundImage = true, autoplay = true, interval = 5000, pauseOnHover = true, scaleRatio = 1.15, imgStyle, onChange } = props;
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(null);
     const [isHover, setIsHover] = useState(!pauseOnHover);
 
     const timer = useRef(null);
@@ -41,6 +41,12 @@ export default function Slider(props: {
             handleStopInterval();
         };
     }, [autoplay, interval]);
+
+    useEffect(() => {
+        //初始化，防止动画不加载
+        setCurrentIndex(0);
+    }, [])
+
 
     useEffect(() => {
         onChange && onChange(currentIndex)
