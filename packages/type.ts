@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 export interface itemProps {
-    title: string,
+    title: ReactNode,
     content: ReactNode,
     src: string,
 }
