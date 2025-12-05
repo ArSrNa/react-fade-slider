@@ -6,7 +6,7 @@
 
 CNB不支持视频直接预览，[点此查看效果](image/index.mp4)
 
-[查看Demo](https://qv72q59xbu-5173.cnb.run/demo/nodejs/slider)
+[查看Demo](https://os-demo.arsrna.cn/?path=/docs/react-fade-slider--docs)
 
 # 使用
 
