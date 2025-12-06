@@ -1,6 +1,6 @@
 {
   "name": "react-fade-slider",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "React 淡入淡出轮播组件",
   "type": "module",
   "files": [
@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://cnb.cool/arsrna/os/react-fade-slider/-/issues"
   },
-  "homepage": "https://os.arsrna.cn/demo/nodejs/react-fade-slider",
+  "homepage": "https://os-demo.arsrna.cn/?path=/docs/react-fade-slider--docs",
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/node": "^24.3.1",
