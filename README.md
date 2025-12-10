@@ -1,5 +1,13 @@
 # React Slider 轮播图
 
+![badge](https://cnb.cool/arsrna/os/react-fade-slider/-/badge/git/latest/testing/unit/coverage-pr)
+
+![badge](https://cnb.cool/arsrna/os/react-fade-slider/-/badge/git/latest/testing/unit/coverage)
+
+![badge](https://cnb.cool/arsrna/os/react-fade-slider/-/badge/git/latest/ci/status/push)
+
+![badge](https://cnb.cool/arsrna/os/react-fade-slider/-/badge/git/latest/ci/status/tag_push)
+
 复现Apple官网轮播介绍效果。
 
 ![](image/image.png)

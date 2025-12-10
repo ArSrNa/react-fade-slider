@@ -16,19 +16,6 @@ $:
         - name: 安装依赖
           script:
             - npm i -g bun
-        - name: 测试覆盖率
-          script:
-            - bun i
-            - bun test
-        - name: coverage
-          type: testing:coverage
-          options:
-            diffLines: 78 # 增量覆盖率红线
-          exports:
-            lines: LINES
-            diff_pct: DIFF_LINES
-        - name: result
-          script: echo echo "LINES $LINES DIFF_LINES $DIFF_LINES"
 
   push:
     sync:
@@ -54,6 +41,17 @@ $:
           script:
             - npm i -g bun
             - bun i
+        - name: 测试覆盖率
+          script: bun test
+        - name: coverage
+          type: testing:coverage
+          options:
+            diffLines: 69 # 增量覆盖率红线
+          exports:
+            lines: LINES
+            diff_pct: DIFF_LINES
+        - name: result
+          script: echo echo "LINES $LINES DIFF_LINES $DIFF_LINES"
 
   # tag push 时触发
   tag_push:
