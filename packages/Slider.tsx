@@ -52,15 +52,8 @@ export default function Slider(props: {
         onChange && onChange(currentIndex)
     }, [currentIndex])
 
-    useEffect(() => {
-        item.forEach((m) => {
-            const img = new Image();
-            img.src = m.src;
-        });
-    }, [item]);
-
     function handleStartInterval() {
-        // console.log('startInterval');
+        console.log('startInterval');
         if (timer.current !== null) return;
         setIsHover(true);
         timer.current = setInterval(() => {
@@ -69,7 +62,7 @@ export default function Slider(props: {
     }
 
     function handleStopInterval() {
-        // console.log('stopInterval');
+        console.log('stopInterval');
         if (timer.current === null) return;
         setIsHover(false);
         clearInterval(timer.current);
@@ -91,6 +84,7 @@ export default function Slider(props: {
     }
 
     return (<div className={style["slider-container"]} style={props.style || { height: '60vh' }}
+        data-testid="slider-root"
         onMouseLeave={() => {
             if (pauseOnHover && autoplay) handleStartInterval();
         }}
@@ -131,6 +125,7 @@ export default function Slider(props: {
         <div className={`${style["slider-dot-container"]}`}>
             {item && item.map((m, i) => (
                 <div onClick={() => setCurrentIndex(i)} className={style["slider-dot"]}
+                    data-testid={`slider-dot-${i}`}
                     key={`slider-dot-${i}`}>
                     <div
                         className={`${currentIndex === i ? style["slider-dot-active"] : ''}`}
@@ -143,9 +138,11 @@ export default function Slider(props: {
                     <div className={style['slider-dot-bg']} />
                 </div>))}
         </div>
-        {!isHover && <div className={style['slider-state-btn']}>
-            <img src={pauseIcon} />
-        </div>}
+        {!isHover && (
+            <div data-testid="slider-pause-btn" className={style['slider-state-btn']}>
+                <img src={pauseIcon} />
+            </div>
+        )}
     </div>
     );
 }

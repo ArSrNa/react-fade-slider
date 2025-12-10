@@ -16,8 +16,13 @@
   "rootDir": "./",
   "include": [
     "./packages/**/*",
-    "./example/**/*"
+    "./example/**/*",
+    "./__test__/**/*"
   ],
+  "types": [
+    "jest",
+    "node"
+  ], // 显式包含 jest 类型
   "exclude": [
     "**/*.scss",
     "node_modules/**/*",

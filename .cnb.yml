@@ -4,22 +4,35 @@ $:
         - vscode
         - docker
       docker:
-        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+        image: docker.cnb.cool/arsrna/dev-image/nodejs
         volumes:
+          - /root/.bun/install/cache
           - /root/.npm
-          - /root/.pnpm-store
       imports:
         - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
       runner:
         cpus: 16
       stages:
         - name: 安装依赖
-          script: pnpm install
-        - name: 构建
-          script: npm run build
+          script:
+            - npm i -g bun
+        - name: 测试覆盖率
+          script:
+            - bun i
+            - bun test
+        - name: coverage
+          type: testing:coverage
+          options:
+            diffLines: 78 # 增量覆盖率红线
+          exports:
+            lines: LINES
+            diff_pct: DIFF_LINES
+        - name: result
+          script: echo echo "LINES $LINES DIFF_LINES $DIFF_LINES"
 
   push:
-    - stages:
+    sync:
+      stages:
         - name: sync to github
           image: tencentcom/git-sync
           imports:
@@ -30,11 +43,22 @@ $:
             username: ${GIT_USERNAME}
             password: ${GIT_ACCESS_TOKEN}
             git_email: "root@arsrna.cn"
+    cr:
+      docker:
+        image: node:24
+        volumes:
+          - /root/.npm
+          - /root/.bun/install/cache
+      stages:
+        - name: 安装
+          script:
+            - npm i -g bun
+            - bun i
 
   # tag push 时触发
   tag_push:
     - docker:
-        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+        image: docker.cnb.cool/arsrna/dev-image/nodejs
       runner:
         cpus: 16
       stages:

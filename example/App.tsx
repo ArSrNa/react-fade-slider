@@ -45,7 +45,7 @@ function App() {
   return (
     <>
       <h1>源文件</h1>
-      <Slider item={item} pauseOnHover={false} autoplay={false} backgroundImage={false} />
+      <Slider item={item} pauseOnHover={true} autoplay={true} backgroundImage={true} />
       {/* <h1>编译后</h1>
       <SliderComp item={item} /> */}
       <p>*注意：上述所有素材均为测试使用，版权归原作者所有，禁止用于商业用途！</p>
