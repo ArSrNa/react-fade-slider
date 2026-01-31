@@ -53,7 +53,7 @@ export default function Slider(props: {
     }, [currentIndex])
 
     function handleStartInterval() {
-        console.log('startInterval');
+        // console.log('startInterval');
         if (timer.current !== null) return;
         setIsHover(true);
         timer.current = setInterval(() => {
@@ -62,7 +62,7 @@ export default function Slider(props: {
     }
 
     function handleStopInterval() {
-        console.log('stopInterval');
+        // console.log('stopInterval');
         if (timer.current === null) return;
         setIsHover(false);
         clearInterval(timer.current);

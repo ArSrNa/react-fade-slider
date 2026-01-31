@@ -1,10 +1,8 @@
 import Slider from '../packages/Slider';
 import './index.scss'
-import SliderComp, { itemProps } from '../dist/index.js';
-import '../dist/index.css';
 import { Button, Divider, Space } from 'tdesign-react'
 import 'tdesign-react/dist/tdesign.min.css'
-
+import { itemProps } from '../packages';
 
 function App() {
   const item: itemProps[] = [
