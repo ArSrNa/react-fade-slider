@@ -25,8 +25,10 @@ export default function Slider(props: {
     scaleRatio?: number;
     /**切换回调 */
     onChange?: (index: number) => any;
+    /**小屏(≤768px)时是否关闭渐变，使用纯色遮罩 */
+    disableMobileGradient?: boolean;
 }) {
-    const { item, itemStyle, backgroundImage = true, autoplay = true, interval = 5000, pauseOnHover = true, scaleRatio = 1.15, imgStyle, onChange } = props;
+    const { item, itemStyle, backgroundImage = true, autoplay = true, interval = 5000, pauseOnHover = true, scaleRatio = 1.15, imgStyle, onChange, disableMobileGradient = false } = props;
 
     const [currentIndex, setCurrentIndex] = useState(null);
     const [isHover, setIsHover] = useState(!pauseOnHover);
@@ -110,7 +112,7 @@ export default function Slider(props: {
                         </div>
                     </div>
                     <div className={style['slider-img']}>
-                        <div className={style['slider-mask']} />
+                        <div className={`${style['slider-mask']} ${disableMobileGradient ? style['slider-mask-mobile-solid'] : ''}`} />
                         <img src={m.src} style={{
                             ...imgStyle,
                             "--scale-ratio": scaleRatio

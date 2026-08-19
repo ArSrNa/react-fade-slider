@@ -217,6 +217,11 @@
 
 
 @media screen and (max-width: 768px) {
+    .slider-mask-mobile-solid {
+        background-image: none;
+        background-color: rgba(0, 0, 0, 0.78);
+    }
+
     .slider-handler {
         display: none;
     }

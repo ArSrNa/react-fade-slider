@@ -78,6 +78,12 @@ function App() {
 <Slider item={item} pauseOnHover={false}/>
 ````
 
+## 小屏关闭渐变
+默认小屏（≤768px）仍保留渐变遮罩。如需在小屏时关闭渐变、改用纯色遮罩，设置`disableMobileGradient`为`true`。
+````jsx
+<Slider item={item} disableMobileGradient/>
+````
+
 # demo测试
 
 克隆本仓库
@@ -115,4 +121,5 @@ pnpm start
 | `interval` | `number` | 否 | 自动播放间隔（毫秒），建议不小于 3 秒 | `5000` |
 | `pauseOnHover` | `boolean` | 否 | 鼠标悬停时是否暂停轮播，| `true` |
 | `scaleRatio` | `number` | 否 | 缩放比例 | `1.15` |
+| `disableMobileGradient` | `boolean` | 否 | 小屏（≤768px）时是否关闭渐变、使用纯色遮罩 | `false` |
 | `onChange` | `(index: number) => any` | 否 | 切换回调 | `void '我永远喜欢爱莉希雅'` |
