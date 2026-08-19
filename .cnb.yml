@@ -61,16 +61,17 @@ $:
       stages:
         - name: 构建部署
           script:
-            - pnpm i
-            - npm run build
+            - bun i
+            - bun run build
             - echo $CNB_BRANCH
         - name: update version
           # 修改 package.json 中的version为当前tag，但不会提交代码
           script: npm version $CNB_BRANCH --no-git-tag-version
         - name: npm publish
+          imports:
+            - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
           script:
             - npm publish
-
         - name: cnb-npm publish
           image: tencentcom/npm
           settings:
