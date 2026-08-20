@@ -52,21 +52,25 @@ $:
         - name: result
           script: echo echo "LINES $LINES DIFF_LINES $DIFF_LINES"
 
-  # tag push 时触发
+  # tag push 时触发 release 发版流程
   tag_push:
-    - docker:
+    - name: release
+      docker:
         image: docker.cnb.cool/arsrna/dev-image/nodejs
       runner:
         cpus: 16
       stages:
-        - name: 构建部署
+        - name: 创建 release
+          type: git:release
+          options:
+            tag: $CNB_BRANCH
+          exports:
+            version: RELEASE_VERSION
+        - name: 同步版本并构建
           script:
+            - npm version $RELEASE_VERSION --no-git-tag-version
             - bun i
             - bun run build
-            - echo $CNB_BRANCH
-        # - name: update version
-        #   # 修改 package.json 中的version为当前tag，但不会提交代码
-        #   script: npm version $CNB_BRANCH --no-git-tag-version
         - name: npm publish
           imports:
             - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
